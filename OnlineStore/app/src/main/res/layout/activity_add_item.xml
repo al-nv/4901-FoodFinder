@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AddItemActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/productImageTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_camera"
+                        android:background="@drawable/edt_bg"
+                        android:hint="Product Image"
+                        android:padding="15dp"
+                        android:drawablePadding="10dp"
+                        android:textSize="18dp" />
+                    <ImageView
+                        android:id="@+id/productImageView"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:src="@drawable/ic_launcher_background"
+                        android:scaleType="fitXY"/>
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/productNameEdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edt_bg"
+                    android:hint="Name"
+                    android:padding="15dp"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/priceEdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/edt_bg"
+                    android:hint="Price"
+                    android:padding="15dp"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/colorEdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edt_bg"
+                    android:hint="Color"
+                    android:padding="15dp"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/quantityEdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edt_bg"
+                    android:hint="Quantity"
+                    android:padding="15dp"
+                    android:inputType="number"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/exrDateEdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edt_bg"
+                    android:hint="Exp. Date"
+                    android:padding="15dp"
+                    android:textSize="18dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/addProductBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/btnaddbg"
+                        android:text="Add"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/cancelBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/btncancelbg"
+                        android:text="Cancel"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
