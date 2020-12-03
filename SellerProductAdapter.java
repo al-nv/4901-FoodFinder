@@ -1,5 +1,4 @@
 package com.example.onlinestore.adapter;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -83,18 +82,18 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
 
         Glide.with(context)
                 .load("http://192.168.56.1/storeImage/" + info.getProductImage() + ".jpg")
-                .placeholder(R.drawable.ic_person)
+                .placeholder(R.drawable.ic_broken)
                 .into(holder.productImageView);
 
-        if (info.getStatus().equals("on")) {
-            holder.aSwitch.setChecked(true);
-            holder.avalableTxt.setText("Available");
-            holder.avalableTxt.setBackgroundColor(R.color.green);
-        } else {
-            holder.aSwitch.setChecked(false);
-            holder.avalableTxt.setText("N/A");
-            holder.avalableTxt.setBackgroundColor(R.color.black);
-        }
+//        if (info.getStatus().equals("on")) {
+//            holder.aSwitch.setChecked(true);
+//            holder.avalableTxt.setText("Available");
+//            holder.avalableTxt.setBackgroundColor(R.color.green);
+//        } else {
+//            holder.aSwitch.setChecked(false);
+//            holder.avalableTxt.setText("N/A");
+//            holder.avalableTxt.setBackgroundColor(R.color.black);
+//        }
 
         holder.editTxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,8 +105,9 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
                 intent.putExtra("price", info.getPrice());
                 intent.putExtra("color", info.getColor());
                 intent.putExtra("quantity", info.getQuantity());
-                intent.putExtra("exp_date", info.getExp_date());
                 intent.putExtra("productImage", info.getProductImage());
+                intent.putExtra("manufactureDate", info.getManufactureDate());
+                intent.putExtra("expiryDate", info.getExpiryDate());
                 context.startActivity(intent);
             }
         });
@@ -115,9 +115,12 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
         holder.deleteTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(context, ""+info.getProductId(), Toast.LENGTH_SHORT).show();
                 builder.setTitle("Server Response....");
                 builder.setMessage("Are you sure want to delete item");
                 displayAlertDelete(info.getProductId());
+
+
             }
         });
 
@@ -161,7 +164,7 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
     }
 
     public void deleteProduct(final String prductId) {
-        String urlRegister = "http://www.islamictime.ramaulnews.com/deleteProduct.php";
+        String urlRegister = "http://192.168.56.1/DeleteProductMasterStock.php";
         StringRequest requestRegister = new StringRequest(Request.Method.POST, urlRegister,
                 new Response.Listener<String>() {
                     @Override
@@ -173,7 +176,7 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
                             String message = jsonObject.getString("message");
                             // profileImage.setImageResource(0);
 
-                            Toast.makeText(context, "" + message, Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(context, "" + message, Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -192,8 +195,7 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
                 Map<String, String> param = new HashMap<>();
                 Long tsLong = System.currentTimeMillis() / 1000;
                 String ts = tsLong.toString();
-                param.put("productId", prductId);
-                param.put("registerId", String.valueOf(userDetails.get(_REGISTERID)));
+                param.put("ProductId", prductId);
                 return param;
             }
         };
@@ -207,7 +209,7 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
         progressView.setMessage("loading...");
         progressView.setCancelable(false);
         progressView.show();
-        String urlRegister = "http://192.168.56.1/updateStatus.php";
+        String urlRegister = "http://www.islamictime.ramaulnews.com/updateStatus.php";
         StringRequest requestRegister = new StringRequest(Request.Method.POST, urlRegister,
                 new Response.Listener<String>() {
                     @Override
@@ -280,6 +282,7 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
     public void displayAlertDelete(final String productId) {
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -299,4 +302,3 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
         alertDialog.show();
     }
 }
-
