@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/notification"
+        android:orderInCategory="100"
+        android:actionLayout="@layout/action_bage_notification"
+        android:icon="@drawable/ic_notifications"
+        android:title="@string/action_settings"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/badge"
+        android:actionLayout="@layout/action_bage_layout"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_cart"
+        app:showAsAction="always" />
+</menu>
